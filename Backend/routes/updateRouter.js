@@ -6,5 +6,5 @@ const upload = require('../middleWare/storageHandle')
 const router = express.Router();
 router.put("/user",protectRoute,updateUser);
 router.put("/password",protectRoute,updatePassword);
-router.post("/profilePic",upload.single('profileImage'),updateProfilePic)
+router.post("/profilePic",protectRoute,upload.single('profileImage'),updateProfilePic)
 module.exports = router;

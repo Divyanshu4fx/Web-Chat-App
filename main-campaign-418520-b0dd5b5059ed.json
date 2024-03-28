@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "main-campaign-418520",
+  "private_key_id": "b0dd5b5059ed64becb3d88038907a2eee7568ef6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDNmTbaPT5gKteU\nhw88E6PW/kL9FNI5BYjjlegfPbIqDrpLgEXHZ8mklQ5fQbqyroramGZfGhy8OBTs\nQjvEUgIz5QudD9kztS0rpRWlLweXRZ+2fvYin4wPoeZAUYmSsBPo6ObtTOg1QQ5f\nD+Piw6/1kn38XYUOOlJD9U0w/MlC1+yiEEtIn3AjiihGTXDhqDBzEPWKTtmtlUmv\nimX6Y5mZEWA9JIhgt104fLNBvfsqo32U/UNV2ZYzwJaa+3aeteHu0vvA8nVmY/iI\nawyINRDE3xZk8EF/rwibI0IFB+/t5KQa4Mo3wJ+ltLi2xQ4l76NxOtqcXbQSo0Vy\nxGZXntt3AgMBAAECggEAYy8Gx0HEVaBVX9HIB7Nx1sXSi0UAJYIGB8TJtkiNKrzw\nInw/LXNkU4GU7V9IMesCEXJz8G0ob6Sec1uAebUWWvKkJ6D9p3Q/1k5NouKNRuzP\nn7qgAxP0/ZWc/mpXc+x9rl6tCM2ROB+qTzHbPgopWM7S+GwlRDfed+pe0sMgVJ33\nsKaZp5JvZYcdVJdlLR9D403nKhIOREhSvZhgVerCZnKj+K345/VxX6iSfhpX/DWQ\n/NYA0XE6FiqEpGtE1mKjMjipRpgWsQrzVazGiHwb/9EQQD4KlEykO2833KUoHkkc\nXvWfwFNpG6ZnHjjtCC9cRa9hmKNR/EhyjSBlw2eoAQKBgQD8PZ+KACcLsdmq6bk0\naCzLhMktO7OOgMv9jS86vtfQaPnYb55sEGcnRO6r8EIuZwbw5NCzUQ3Wc1ubwusN\n4HGB+w56ydQU3MmdgV03iaJcVOHv2ItXmsGKD7NEP1R85ntziRQcypzzuCzR3OCo\ncVsWUliDP1qrfXH/1mkld9+E6QKBgQDQqaLwU4ObcLrUt1vNBV11fjN8tk4kIK8z\nNjewCjm139tVL1Jny8rSzP8cxTOWr886ZsoeukkQiKYO7v75UBXJf/qxrxNB44Am\nbF1oxhDa0ZE7IxSAjB/SbkJ9rRwXRsDP2z2o1/8PkCA8UdwDwMmh8CZtlPCM/aiZ\n59zqCqahXwKBgQCxk8iPZNAYQZsV4flK1dRDazYeLBuaxT3XQN/xIY3Z4S2Tm/ER\n7vJQCQ1l6n0NIecXDF+I/hUZ1pi1raHBYTNH6LEm7JPsJAukYQB5KuIs0m1FZ1Oh\n1wdN5QO1lkgqrjBXBDgulM2uHwkerbtTmoofytUZgS6Z8HSjQhVAFYY8kQKBgQCV\nmsqkHHyjmfOaR8yd9lbHwrAPnnXwGS8EPL84jFxMNi//p2oh2U+WTDws2IbgZzTg\n3onT9iQkopTM6DYPcofsbMHFW40nFIHxCoj+cePrv42tJL2yXMUEDuHFUbRuS+A6\nJyrSP+szsVYraVWhqzvly1UCBGNj8wpLLp6JfxFxaQKBgGBeRJR9m+EbAiD6pX/B\ngRsFDWJy3Wzp9ikX922jgK9HKBvnKmeA1N0wHbvjMfPNxDL68U2qbkRDCeavhzJ/\n9CS2EKeJAgra6RJSKWh7kSsjKuiDD04OlQHXuNzvqogVnBpu3P03lGjqohMYjQ1/\nTZA30aaS/h7TQ/JwYW7dCj8d\n-----END PRIVATE KEY-----\n",
+  "client_email": "webchatapp@main-campaign-418520.iam.gserviceaccount.com",
+  "client_id": "110888497347020784147",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/webchatapp%40main-campaign-418520.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

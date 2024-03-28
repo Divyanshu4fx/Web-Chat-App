@@ -38,6 +38,7 @@ const signup = async (req, res) => {
                 _id: newUser.id,
                 fullname: newUser.fullname,
                 username: newUser.username,
+                gender: user.gender,
                 profilePic: newUser.profilePic
             })
         }
@@ -65,6 +66,7 @@ const login = async (req, res) => {
             _id: user._id,
             fullname: user.fullname,
             username: user.username,
+            gender: user.gender,
             profilePic: user.profilePic,
         });
     }

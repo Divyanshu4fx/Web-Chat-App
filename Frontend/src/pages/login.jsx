@@ -28,7 +28,7 @@ function Login() {
                     </div>
                     <div>
                         <label className='label p-2'><span className='text-base-label-text'>Password</span></label>
-                        <input type="text" placeholder='Enter password' className='w-full input-bordered h-10 rounded p-4' value={inputs.password} onChange={(e)=>setInputs({...inputs,password : e.target.value})}/>
+                        <input type="password" placeholder='Enter password' className='w-full input-bordered h-10 rounded p-4' value={inputs.password} onChange={(e)=>setInputs({...inputs,password : e.target.value})}/>
                     </div>
                     <Link to='/signup' className='test-sm hover:underline hover:text-blue-600 mt-2 inline-block'>Don't have a account?</Link>
                     <div>

@@ -26,7 +26,7 @@ function useSignup() {
       localStorage.setItem("chat-user",JSON.stringify(data))
       setAuthUser(data);
     } catch (e) {
-      // toast.error(e.message);
+      toast.error(e.message);
       console.error(e.message);
     }
     finally {
@@ -39,16 +39,16 @@ function useSignup() {
 export default useSignup
 
 function handleInputErrors({ fullname, username, password, confirmpassword, gender }) {
-  // toast.error("Error");
+  toast.error("Error");
   // return false;
   if (!fullname || !username || !password || !confirmpassword || !gender) {
-    // toast.error('Please fill in all fields');
+    toast.error('Please fill in all fields');
     console.error('Please fill in all fields');
     return false;
   }
 
   if (password !== confirmpassword) {
-    // toast.error('Password do not match');
+    toast.error('Password do not match');
     console.error('Password do not match');
     return false;
   }

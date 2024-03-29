@@ -41,11 +41,7 @@ function MessageInput() {
             <Picker
               data={data}
               onEmojiSelect={handleEmojiSelect}
-<<<<<<< HEAD
-              className= " absolute right-2 bottom-16"
-=======
               className="absolute right-2 bottom-16"
->>>>>>> c94546eb0f97f6426d2c975cf6ae4a031e205973
             />
           )}
 

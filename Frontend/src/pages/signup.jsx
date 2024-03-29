@@ -60,7 +60,7 @@ function SignUp() {
               <input type='checkbox' className='checkbox border-slate-900' checked={inputs.gender === "female"} onChange={() => handleCheckboxChange("female")} />
             </div>
           </div>
-          <Link className='text-sm hover:underline hover:text-blue-600 mt-4 inline-block' href="/login">Already have an account?</Link>
+          <Link className='text-sm hover:underline hover:text-blue-600 mt-4 inline-block' to="/login">Already have an account?</Link>
           <div>
             <button className='btn btn-block btn-sm mt-2 border border-slate-700 ' type='submit' disabled={loading}>{loading ? <span className='loading loading-spinner'></span> : "SignUp"}</button>
           </div>

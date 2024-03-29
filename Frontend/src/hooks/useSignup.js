@@ -29,8 +29,10 @@ function useSignup() {
       setButtonDisabled(true);
     }
   };
-  const signup = async ({ fullname, username, email, password, confirmpassword, gender }) => {
-    const success = handleInputErrors({ fullname, username, email, password, confirmpassword, gender })
+  const signup = async ({ inputs , email}) => {
+    const {fullname, username, password, confirmpassword, gender} =inputs
+   
+    const success = handleInputErrors({ fullname, username, password, confirmpassword, gender , email})
     if (!success) return;
     setLoading(true)
     try {
@@ -58,9 +60,10 @@ function useSignup() {
 
 export default useSignup
 
-function handleInputErrors({ fullname, username, email, password, confirmpassword, gender }) {
+function handleInputErrors({ fullname, username, password, confirmpassword, gender, email }) {
   if (!fullname || !username || !email || !password || !confirmpassword || !gender) {
-    toast.error('Please fill in all fields');
+   
+    toast.error('Please fill in all fields ');
     return false;
   }
 
@@ -70,7 +73,7 @@ function handleInputErrors({ fullname, username, email, password, confirmpasswor
   }
 
   if (password.length < 8) {
-    toast.error('Password must be at least 6 characters');
+    toast.error('Password must be at least 8 characters');
     return false;
   }
 

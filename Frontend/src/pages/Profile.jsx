@@ -70,7 +70,7 @@ function Profile() {
                             <Input type="text" required placeholder="Enter Username" />
                         </Form.Item>
                         <Form.Item label="Gender" name="gender" >
-                            <Radio.Group buttonStyle="solid" requiredt>
+                            <Radio.Group buttonStyle="solid" required>
                                 <Radio.Button value="male">Male</Radio.Button>
                                 <Radio.Button value="female">Female</Radio.Button>
                             </Radio.Group>

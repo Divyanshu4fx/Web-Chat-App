@@ -24,8 +24,8 @@ function Profile() {
         location.reload();
     }
     return (
-        <div className="flex flex-row h-full rounded-2xl backdrop-filter backdrop-blur-lg bg-opacity-0">
-            <div className="flex flex-col items-center justify-center p-5 border-r-2 text-black">
+        <div className="flex flex-row h-full bg-opacity-0 rounded-2xl backdrop-filter backdrop-blur-lg">
+            <div className="flex flex-col items-center justify-center p-5 text-black border-r-2">
             <h1 className="p-2 text-2xl font-bold text-center">My Profile</h1>
                 <form  encType="multipart/form-data" onSubmit={handlePhotoUpload} className="flex flex-col">
                     <div className="relative">
@@ -52,7 +52,7 @@ function Profile() {
                     </>
                 )}
             </div>
-            <div className="flex flex-col justify-center items-center p-5 flex-1">
+            <div className="flex flex-col items-center justify-center flex-1 p-5">
                 {!editMode && (
                     <button
                         className="px-2 m-4 font-bold text-white bg-blue-400 border rounded roundedbg-blue-500 hover:bg-blue-700"
@@ -63,14 +63,14 @@ function Profile() {
                 )}
                 {editMode && (
                     <Form initialValues={{ ...user }} onFinish={handleDataUpdate}>
-                        <Form.Item label="Full Name" name="fullname" rules={[{ required: true }]}>
-                            <Input type="text" placeholder="Enter Full Name" />
+                        <Form.Item label="Full Name" name="fullname" >
+                            <Input type="text" required placeholder="Enter Full Name" />
                         </Form.Item>
-                        <Form.Item label="Username" name="username" rules={[{ required: true }]}>
-                            <Input type="text" placeholder="Enter Username" />
+                        <Form.Item label="Username" name="username" >
+                            <Input type="text" required placeholder="Enter Username" />
                         </Form.Item>
-                        <Form.Item label="Gender" name="gender" rules={[{ required: true }]}>
-                            <Radio.Group buttonStyle="solid">
+                        <Form.Item label="Gender" name="gender" >
+                            <Radio.Group buttonStyle="solid" requiredt>
                                 <Radio.Button value="male">Male</Radio.Button>
                                 <Radio.Button value="female">Female</Radio.Button>
                             </Radio.Group>
@@ -91,7 +91,7 @@ function Profile() {
                 )}
                 <Link
                     to="/reset"
-                    className="px-4 py-2 inline font-bold text-white bg-blue-400 hover:bg-blue-700"
+                    className="inline px-4 py-2 font-bold text-white bg-blue-400 hover:bg-blue-700"
                 >
                     Change Password
                 </Link>

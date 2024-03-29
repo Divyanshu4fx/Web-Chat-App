@@ -42,7 +42,7 @@ function MessageInput() {
             <Picker
               data={data}
               onEmojiSelect={handleEmojiSelect}
-              style={{ position: "absolute", bottom: "70px", right: "10px" }}
+              className="absolute right-2 bottom-16"
             />
           )}
 

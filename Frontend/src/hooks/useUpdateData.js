@@ -21,7 +21,7 @@ function UploadData() {
             setAuthUser(data);
             toast.success("Changes Saved Succesfully");
         } catch (error) {
-            console.error('Error :', error);
+            toast.error(error.message);
         }
         finally{
             setLoading(false);

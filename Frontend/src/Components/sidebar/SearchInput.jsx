@@ -5,11 +5,13 @@ import useGetConversation from "../../hooks/useGetConversation";
 import toast from "react-hot-toast";
 import {Link} from 'react-router-dom'
 import { VscAccount } from "react-icons/vsc";
+import { useAuthContext } from "../../context/authContext";
 
 function SearchInput() {
   const [search, setSearch] = useState();
   const { setSelectedChat } = useChat();
   const { chats } = useGetConversation();
+  const {authUser} = useAuthContext();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!search) return;
@@ -29,9 +31,9 @@ function SearchInput() {
     <div className="flex flex-row gap-1">
       <Link
         to="/profile"
-        className="flex items-center justify-center px-4 py-2 font-bold text-white bg-blue-400 border rounded-full hover:bg-blue-700"
+        className="flex items-center p-0 bg-transparent justify-center font-bold text-white bg-blue-400 border-none rounded-full "
       >
-       <VscAccount className="scale-150" />
+       <img src={authUser.profilePic} className="rounded-full w-10"  alt="" />
       </Link>
       <form onSubmit={handleSubmit} className="flex gap-2 item-center">
         <input

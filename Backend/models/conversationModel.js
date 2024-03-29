@@ -7,16 +7,16 @@ const convsersationSchema = new mongoose.Schema({
             ref: "User",
         }
     ],
-    messages : [
+    messages: [
         {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : "Message",
-            default:[]
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Message",
+            default: []
         }
     ]
-},{timestamps : true})
+}, { timestamps: true })
 
 
-const Convsersation = mongoose.model("Conversation",convsersationSchema)
+const Convsersation = mongoose.model("Conversation", convsersationSchema)
 
-module.exports=Convsersation;
+module.exports = Convsersation;

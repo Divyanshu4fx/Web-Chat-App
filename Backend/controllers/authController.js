@@ -1,10 +1,9 @@
 const User = require("../models/userModel.js")
 const bcryptjs = require('bcryptjs');
 const generateTokenAndSetCookie = require("../utils/generateToken.js");
-// const user = require("../models/userModel.js");
 
 const signup = async (req, res) => {
-    const { fullname, username, password, confirmpassword, gender } = req.body;
+    const { fullname, username, email, password, confirmpassword, gender } = req.body;
     try {
 
         if (password !== confirmpassword) {
@@ -13,6 +12,10 @@ const signup = async (req, res) => {
         const user = await User.findOne({ username })
         if (user) {
             return res.status(400).json({ error: "Username already exist" })
+        }
+        const mail = await User.findOne({ email })
+        if (mail) {
+            return res.status(400).json({ error: "Email already exist" })
         }
 
         const salt = await bcryptjs.genSalt(10);
@@ -25,20 +28,21 @@ const signup = async (req, res) => {
             {
                 fullname,
                 username,
+                email,
                 password: hashPassword,
                 gender,
                 profilePic: userProfilePic
             }
         )
         if (newUser) {
-            //Generate JWT Token here...
             generateTokenAndSetCookie(newUser._id, res);
             await newUser.save();
             res.status(201).json({
                 _id: newUser.id,
                 fullname: newUser.fullname,
                 username: newUser.username,
-                gender: user.gender,
+                email: newUser.email,
+                gender: newUser.gender,
                 profilePic: newUser.profilePic
             })
         }
@@ -48,8 +52,8 @@ const signup = async (req, res) => {
     }
 
     catch (e) {
-        console.log("Error in singup controller"+ e.message);
-        res.status(500).json({ error: "Internal Server error "});
+        console.log("Error in singup controller" + e.message);
+        res.status(500).json({ error: "Internal Server error " });
     }
 }
 
@@ -71,20 +75,20 @@ const login = async (req, res) => {
         });
     }
     catch (e) {
-        console.log("Error in login controller "+ e.message);
-        res.status(500).json({ error: "Internal Server error"});
+        console.log("Error in login controller " + e.message);
+        res.status(500).json({ error: "Internal Server error" });
     }
 }
 
 
 const logout = (req, res) => {
     try {
-        res.cookie("jwt","",{maxAge:0});
-        res.status(200).json({message:"Succesfully logout"});
+        res.cookie("jwt", "", { maxAge: 0 });
+        res.status(200).json({ message: "Succesfully logout" });
     }
     catch (e) {
-        console.log("Error in logout controller "+ e.message);
-        res.status(500).json({ error: "Internal Server error"});
+        console.log("Error in logout controller " + e.message);
+        res.status(500).json({ error: "Internal Server error" });
     }
 }
 

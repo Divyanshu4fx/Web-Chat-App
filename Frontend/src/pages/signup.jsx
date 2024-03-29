@@ -8,24 +8,23 @@ function SignUp() {
     {
       fullname: '',
       username: '',
+      email: '',
       password: '',
       confirmpassword: '',
       gender: '',
     }
   );
 
-  const {loading,signup} = useSignup();
+  const { loading, signup, errorMessage, isButtonDisabled, validate } = useSignup();
 
   const handleCheckboxChange = (gender) => {
-    setInputs({...inputs, gender })
+    setInputs({ ...inputs, gender })
   }
 
   const handleSubmit = async (e) => {
+    console.log(isButtonDisabled);
     e.preventDefault();
-    // toast.error("Error");
-    // console.log("Error");
     await signup(inputs);
-    console.log(inputs);
   }
 
   return (
@@ -42,12 +41,21 @@ function SignUp() {
             <input type="text" placeholder='Enter Username' className='w-full input-bordered h-10 rounded p-4' value={inputs.username} onChange={(e) => { setInputs({ ...inputs, username: e.target.value }) }} />
           </div>
           <div>
+            <label className='label p-2'><span className='text-base-label-text'>Email</span></label>
+            <input type="text" placeholder='Enter Username' className='w-full input-bordered h-10 rounded p-4' value={inputs.email} onChange={(e) => { setInputs({ ...inputs, email: e.target.value }) }} />
+          </div>
+          <div>
             <label className='label p-2'><span className='text-base-label-text'>Password</span></label>
-            <input type="text" placeholder='Enter Username' className='w-full input-bordered h-10 rounded p-4' value={inputs.password} onChange={(e) => { setInputs({ ...inputs, password: e.target.value }) }} />
+            <input type="password" placeholder='Enter Password' className='w-full input-bordered h-10 rounded p-4' value={inputs.password} onChange={(e) => { setInputs({ ...inputs, password: e.target.value }); validate(inputs.password); }} />
+            {errorMessage === "" ? (
+              <span />
+            ) : (
+              <span className={"font-bold" + errorMessage === "Is Strong Password" ? "text-green-600" : "text-red-600"}>{errorMessage}</span>
+            )}
           </div>
           <div>
             <label className='label p-2'><span className='text-base-label-text'>Confirm Password</span></label>
-            <input type="text" placeholder='Confirm Password' className='w-full input-bordered h-10 rounded p-4' value={inputs.confirmpassword} onChange={(e) => { setInputs({ ...inputs, confirmpassword: e.target.value }) }} />
+            <input type="password" placeholder='Confirm Password' className='w-full input-bordered h-10 rounded p-4' value={inputs.confirmpassword} onChange={(e) => { setInputs({ ...inputs, confirmpassword: e.target.value }) }} />
           </div>
           {/* gender code */}
           <div className='flex'>
@@ -62,7 +70,7 @@ function SignUp() {
           </div>
           <Link className='text-sm hover:underline hover:text-blue-600 mt-4 inline-block' to="/login">Already have an account?</Link>
           <div>
-            <button className='btn btn-block btn-sm mt-2 border border-slate-700 ' type='submit' disabled={loading}>{loading ? <span className='loading loading-spinner'></span> : "SignUp"}</button>
+            <button className='btn btn-block btn-sm mt-2 border border-slate-700 ' type='submit' disabled={loading || isButtonDisabled}>{loading ? <span className='loading loading-spinner'></span> : "SignUp"}</button>
           </div>
         </form>
       </div>

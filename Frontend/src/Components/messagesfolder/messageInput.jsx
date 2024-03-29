@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { IoSend } from "react-icons/io5";
 import useSendMessage from "../../hooks/useSendMessage";
-
-import { FaChevronDown } from "react-icons/fa";
+import { MdEmojiEmotions } from "react-icons/md";
+import { FaChevronDown} from "react-icons/fa";
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
@@ -33,16 +33,15 @@ function MessageInput() {
     <div>
       <form className="px-4 my-3" onSubmit={handleSubmit}>
         <div className="relative w-full gap-1">
-          
           <span onClick={() => setShowPicker(!showPicker)}>
-            {!showPicker && <span className="cursor-pointer">😀</span> }  
+            {!showPicker && <span className="cursor-pointer"><MdEmojiEmotions /></span> }  
             {showPicker && <span className="cursor-pointer"><FaChevronDown /></span>}
           </span>
           {showPicker && (
             <Picker
               data={data}
               onEmojiSelect={handleEmojiSelect}
-              style={{ position: "absolute", bottom: "70px", right: "10px" }}
+              className= " absolute right-2 bottom-16"
             />
           )}
 

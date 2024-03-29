@@ -14,12 +14,11 @@ function UploadData() {
                 body: JSON.stringify({fullname,username,gender}),
             });
             const data = await res.json();
-            console.log(data);
-            localStorage.setItem("chat-user",JSON.stringify(data));
-            setAuthUser(data);
             if (data.error) {
                 throw new Error(data.error);
             }
+            localStorage.setItem("chat-user",JSON.stringify(data));
+            setAuthUser(data);
             toast.success("Changes Saved Succesfully");
         } catch (error) {
             console.error('Error :', error);

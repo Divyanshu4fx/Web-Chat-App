@@ -5,16 +5,22 @@ const updateUser = async (req, res) => {
     const { fullname, username, gender } = req.body;
     try {
         const loggedUserId = req.user._id;
-        const user = await User.findOne({ username })
+        let user = null;
+        if(!(req.user.username === username))
+        {
+            user = await User.findOne({ username })
+        }
         if (user) {
-            return res.status(400).json({ error: "Username already exist" })
+            console.log("UserName already exist")
+            res.status(400).json({ error: "Username already exist" });
+            return;
         }
         const updatedUser = await User.findByIdAndUpdate({ _id: loggedUserId }, { fullname, username, gender }, { new: true }).select("-password");
         if (updatedUser) {
             res.status(200).json(updatedUser);
         }
         else {
-            res.status(404).json({ message: "User not Found" });
+            res.status(404).json({ error: "User not Found" });
         }
     } catch (e) {
         console.log("Error in updateController " + e.message);

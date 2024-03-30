@@ -1,5 +1,4 @@
 const User = require('../models/userModel.js');
-
 const getUserList = async (req, res) => {
     try {
         const loggedUserId = req.user._id;

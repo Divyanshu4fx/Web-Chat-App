@@ -11,7 +11,6 @@ const updateUser = async (req, res) => {
             user = await User.findOne({ username })
         }
         if (user) {
-            console.log("UserName already exist")
             res.status(400).json({ error: "Username already exist" });
             return;
         }

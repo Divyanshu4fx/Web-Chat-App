@@ -27,6 +27,20 @@ body{
     background: #242424;
 }
 
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .shake {
 	animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0.2s both;
 	transform: translate3d(0, 0, 0);

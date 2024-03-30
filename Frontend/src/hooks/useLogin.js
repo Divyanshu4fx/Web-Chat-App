@@ -25,7 +25,7 @@ const useLogin = ()=>
             setAuthUser(data);
         }
         catch (e) {
-            toast.error(e.message);
+            toast.error(e.message); 
         }
         finally{
             setLoading(false);

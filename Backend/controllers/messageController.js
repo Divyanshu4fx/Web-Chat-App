@@ -6,7 +6,6 @@ const sendMessage = async (req, res) => {
     try {
         const { message } = req.body;
         const { id: reciverId } = req.params;
-        // console.log(req.user);
         const senderId = req.user._id;
 
         let conversation = await Convsersation.findOne({
@@ -32,8 +31,6 @@ const sendMessage = async (req, res) => {
         if (newMessage) {
             conversation.messages.push(newMessage._id);
         }
-        // await conversation.save();
-        // await newMessage.save();
         await Promise.all([conversation.save(), newMessage.save()])
 
         const recevierSocketId = getReceiverSocketId(reciverId);

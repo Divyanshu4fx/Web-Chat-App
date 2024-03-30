@@ -26,7 +26,7 @@ function Profile() {
     }
     return (
         <div className="flex flex-row h-full bg-opacity-0 rounded-2xl backdrop-filter backdrop-blur-lg">
-            <Link to='/' className="block p-4 m-4 bg-blue-700 border rounded-full h-fit"><IoMdHome/></Link>
+            <Link to='/' className="p-4 m-4 bg-blue-700 border rounded-full h-fit"><IoMdHome/></Link>
             <div className="flex flex-col items-center justify-center p-5 text-black border-r-2">
             <h1 className="p-2 text-2xl font-bold text-center">My Profile</h1>
                 <form  encType="multipart/form-data" onSubmit={handlePhotoUpload} className="flex flex-col">

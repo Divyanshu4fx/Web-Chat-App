@@ -7,7 +7,8 @@ const connectToMongoDB = require('./DB/connectToDb.js');
 const messageRouter = require('./routes/messageRoutes.js')
 const userRouter = require("./routes/userRouter.js");
 const updateRouter = require("./routes/updateRouter.js");
-const {app,server} = require("./socket/socket.js")
+const groupRouter = require("./routes/groupRouter.js");
+const {app,server} = require("./socket/socket.js");
 // const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -16,8 +17,8 @@ app.use(cookieParser());
 app.use("/api/auth", authRouter);
 app.use("/api/messages", messageRouter);
 app.use("/api/users/", userRouter);
-app.use("/api/update/",updateRouter) // new code
-
+app.use("/api/update/",updateRouter);
+app.use("/api/group/",groupRouter);
 app.get("/", (req, res) => {
     res.send("Hello World");
     res.end();

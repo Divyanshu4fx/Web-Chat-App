@@ -5,10 +5,7 @@ function Chat({ chat, emoji, lastIndex }) {
     const { selectedChat, setSelectedChat } = useChat();
     const isSelected = selectedChat?._id === chat._id;
     const {onlineUsers} = useSocketContex();
-    const isOnline = onlineUsers.includes(chat._id);
-    // console.log(isOnline);
-    // console.log("Online User "+onlineUsers);
-    // console.log(chat);
+    const isOnline = onlineUsers.includes(chat._id);    
     return (
         <>
             <div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer

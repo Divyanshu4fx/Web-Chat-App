@@ -1,38 +1,3 @@
-// import { useEffect, useState } from "react"
-// import toast from "react-hot-toast";
-
-// const useGetConversation = () => {
-//     const [loading, setLoading] = useState(false);
-//     const [chats, setChats] = useState([]);
-//     const {loadingG, groups} = useGetGroups();
-//     useEffect(() => {
-//         const getConversation = async () => {
-//             setLoading(true);
-//             try {
-//                 const res = await fetch("/api/users",
-//                 {
-//                     credentials: 'include',
-//                 });
-//                 const data = await res.json();
-//                 if (data.error) {
-//                     throw new Error(data.error)
-//                 }
-//                 setChats(data);
-//             }
-//             catch (e) {
-//                 toast.error(e.message);
-//             }
-//             finally {
-//                 setLoading(false);
-//             }
-//         }
-//         getConversation();
-//     }, [])
-//     return {loading,chats};
-// }
-
-// export default useGetConversation;
-
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -44,7 +9,6 @@ const useGetConversation = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                // Fetching users
                 const usersRes = await fetch("/api/users", {
                     credentials: 'include',
                 });
@@ -60,7 +24,7 @@ const useGetConversation = () => {
                     throw new Error(groupsData.error);
                 }
                 const mergedChats = [...usersData, ...groupsData];
-                setChats(mergedChats);
+                setChats(mergedChats.filter((Object) => { if(Object._id !== "660913e18dba4e4ba213aafa") return Object; }));
             } catch (error) {
                 toast.error(error.message);
             } finally {

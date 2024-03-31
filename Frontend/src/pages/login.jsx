@@ -31,6 +31,7 @@ function Login() {
                         <input type="password" placeholder='Enter password' className='w-full h-10 p-4 rounded input-bordered' value={inputs.password} onChange={(e)=>setInputs({...inputs,password : e.target.value})}/>
                     </div>
                     <Link to='/verifyEmail?newRegister=false' className='inline-block mt-2 test-sm hover:underline hover:text-blue-600'>Forgot password?</Link>
+                    <br/>
                     <Link to='/verifyEmail?newRegister=true' className='inline-block mt-2 test-sm hover:underline hover:text-blue-600'>Don't have a account?</Link>
                     <div>
                         <button className='mt-2 border btn btn-block btn-sm border-slate-700' type='submit' disabled={loading}>{loading ?<span className='loading loading-spinner'></span> : "Login" }</button>

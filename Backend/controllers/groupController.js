@@ -41,7 +41,7 @@ const getGroups = async (req, res) => {
         const groups = await GroupChat.find({ participants: loggedUserId }).populate('participants', 'fullname');
         // const groups = await GroupChat.find({ participants: loggedUserId }).populate('participants');
         if (groups.length === 0) {
-            res.status(400).json({ error: "No groups found" });
+            res.status(400).json([]);
             return;
         }
         res.status(200).json(groups);

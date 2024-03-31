@@ -9,12 +9,13 @@ function SignUp() {
       fullname: '',
       username: '',
       password: '',
+      email: '',
       confirmpassword: '',
       gender: '',
     }
   );
 
-  const email = location.state.email || "";
+  // const email = location.state.email || "";
   const { loading, signup, errorMessage, isButtonDisabled, validate } = useSignup();
 
   const handleCheckboxChange = (gender) => {

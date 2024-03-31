@@ -3,18 +3,18 @@ import toast from 'react-hot-toast';
 import { IoAddCircleOutline } from "react-icons/io5";
 import useCreateGroup from "../hooks/useCreateGroup";
 function CreateGroup(props) {
-    const [users, setUsers] = useState(props.chats);
+    const [users, setUsers] = useState(props.chats.filter((object) => { if (!object.chatName && object._id !== "660913e18dba4e4ba213aafa") return object; }));
     const [selectedUser, setSelectedUser] = useState([]);
     const { loading, createGroup } = useCreateGroup();
     const [groupName, setGroupName] = useState("");
     function handleSearch(e) {
         const input = e.target.value.toLowerCase().trim();
         if (input === "") {
-            setUsers(props.chats);
+            setUsers(props.chats.filter((object) => { if (!object.chatName && object._id !== "660913e18dba4e4ba213aafa") return object; }));
             return;
         }
         const matchingNames = props.chats.filter((object) => {
-            if (object.fullname.toLowerCase().includes(input)) return object;
+            if (!object.chatName && object._id !== "660913e18dba4e4ba213aafa" && object.fullname.toLowerCase().includes(input)) return object;
         });
         setUsers(matchingNames);
     }
@@ -35,7 +35,7 @@ function CreateGroup(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await createGroup(groupName,selectedUser);
+        await createGroup(groupName, selectedUser);
         location.reload();
     }
     return (

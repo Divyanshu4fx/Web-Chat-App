@@ -34,7 +34,11 @@ function Message({ message }) {
                         <img src={profilePic} alt="User Avatar" />
                     </div>
                 </div>
-                <div className={`chat-bubble text-white ${chatColor} ${shakeClass}`}>{message.message}</div>
+                <div className={`chat-bubble text-white max-w-60 ${chatColor} ${shakeClass}`}>
+                    <div style={{ wordWrap: 'break-word' }}>
+                        {message.message}
+                    </div>
+                </div>
                 <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime}</div>
             </div>
         )
@@ -57,7 +61,7 @@ function Message({ message }) {
                     </div>
                 </div>
                 <div className={`chat-bubble text-white ${chatColor} `}>{message.message}
-                    <div className='text-white' style={{fontSize :'8px'}}>{fullname}</div>
+                    <div className='text-white' style={{ fontSize: '8px' }}>{fullname}</div>
                 </div>
                 <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime}</div>
             </div>

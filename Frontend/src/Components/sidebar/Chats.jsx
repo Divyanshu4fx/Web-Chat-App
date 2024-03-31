@@ -4,7 +4,6 @@ import useGetConversation from '../../hooks/useGetConversation'
 import {getRandomEmoji} from '../../utils/emoji.js';
 function Chats() {
   const { loading, chats } = useGetConversation();
-  // console.log(chats);
   return (
     <div className='py-2 flex flex-col overflow-auto'>
         {chats.map((chat,idx)=>

@@ -7,10 +7,17 @@ const useGetMessages = () => {
     const { messages, setMessages, selectedChat } = useChat();
     useEffect(() => {
         const getMessages = async () => {
-            console.log("Getting Messages...");
             setLoading(true);
             try {
-                const res = await fetch(`/api/messages/${selectedChat._id}`);
+                let res = null;
+                if(!selectedChat.chatName)
+                {
+                    res = await fetch(`/api/messages/${selectedChat._id}`);
+                }
+                else
+                {
+                    res = await fetch(`/api/group/groupmessage/${selectedChat._id}`);
+                }
                 const data = await res.json();
                 if (data.error) {
                     throw new Error(data.error);

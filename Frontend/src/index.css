@@ -10,24 +10,24 @@ body{
     background-attachment: fixed;
 }
 
-::-webkit-scrollbar{
+*::-webkit-scrollbar{
     width: 8px;
 }
 
-::-webkit-scrollbar-track{
+*::-webkit-scrollbar-track{
     cursor: pointer;
     background: #555;
 }
 
-::-webkit-scrollbar-thumb{
+*::-webkit-scrollbar-thumb{
     background: #121212;
 }
 
-::-webkit-scrollbar-thumb:hover{
+*::-webkit-scrollbar-thumb:hover{
     background: #242424;
 }
 
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
@@ -39,7 +39,7 @@ body{
 
 *::-webkit-scrollbar-track {
     background-color: rgba(255, 255, 255, 0.1);
-}
+} */
 
 .shake {
 	animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0.2s both;

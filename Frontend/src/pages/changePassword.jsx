@@ -60,7 +60,6 @@ const ChangePassword = () => {
     }
   };
   return (
-    <>
       <div className="flex items-center justify-center bg-red-500 bg-opacity-0 border rounded-lg shadow-md form-container bg-clip-padding backdrop-filter backdrop-blur-lg">
         <Form
           layout="vertical"
@@ -96,7 +95,6 @@ const ChangePassword = () => {
           </button>
         </Form>
       </div>
-    </>
   );
 };
 

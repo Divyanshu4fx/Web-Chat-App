@@ -29,7 +29,7 @@ function Profile() {
       <div className="flex flex-col border-r-2 border-white w-5/12">
         <Link
           to="/"
-          className="p-2 m-4 bg-gradient-to-r from-fuchsia-700 to-pink-600 border-2 border-white border-dashed rounded-full h-fit w-fit scale-150"
+          className="p-2 m-4 bg-rose-500 border-2 border-white border-dashed rounded-full h-fit w-fit scale-150 text-white hover:text-black hover:border-black"
         >
           <IoMdHome />
         </Link>
@@ -41,7 +41,7 @@ function Profile() {
             onSubmit={handlePhotoUpload}
             className="flex flex-col"
           >
-            <div className="m-2">
+            <div className="relative m-2">
               <img
                 src={user.profilePic}
                 alt="Profile Image"
@@ -63,7 +63,7 @@ function Profile() {
             {editMode && (
               <button
                 type="submit"
-                className="bg-blue-700 text-white text-base font-bold p-1 rounded-lg mt-2 px-1.5 hover:bg-white hover:text-blue-700"
+                className="bg-violet-800 text-white text-lg font-bold p-2 border-2 border-black rounded-lg mt-4 hover:bg-white hover:text-violet-800"
               >
                 {loadingI ? (
                   <span className="loading loading-spinner"></span>
@@ -76,7 +76,7 @@ function Profile() {
           {!editMode && (
             <>
               <div className="flex-col text-3xl underline">{user.fullname}</div>
-			  <div className="flex-col text-2xl underline">{user.email}</div>
+			  <div className="flex-col text-2xl underline">{user.email}</div>         {/*to be checked later*/}
               <div className="flex-col text-2xl underline">{user.username}</div>
             </>
           )}
@@ -92,7 +92,7 @@ function Profile() {
           </button>
         )}
         {editMode && (
-          <Form initialValues={{ ...user }} onFinish={handleDataUpdate}>
+          <Form initialValues={{ ...user }} onFinish={handleDataUpdate} className="text-xl text-black">
             <Form.Item label="Full Name" name="fullname">
               <Input type="text" required placeholder="Enter Full Name" />
             </Form.Item>
@@ -106,7 +106,7 @@ function Profile() {
               </Radio.Group>
             </Form.Item>
             <button
-              className="px-4 py-2 m-4 font-bold text-white bg-blue-400 border rounded roundedbg-blue-500 hover:bg-blue-700"
+              className="px-4 py-2 m-4 font-bold text-white bg-violet-800 border-2 border-black rounded-lg hover:text-violet-800 hover:bg-white"
               type="submit"
             >
               {loadingD ? (
@@ -116,7 +116,7 @@ function Profile() {
               )}
             </button>
             <button
-              className="px-4 py-2 m-4 font-bold text-white bg-gray-400 border rounded roundedbg-gray-500 hover:bg-gray-700"
+              className="px-4 py-2 m-4 font-bold text-white bg-neutral-800 border-2 border-black rounded-lg roundedbg-gray-500 hover:text-neutral-800 hover:bg-white"
               onClick={() => setEditMode(false)}
             >
               Cancel

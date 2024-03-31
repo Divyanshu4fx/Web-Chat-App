@@ -30,12 +30,12 @@ function SearchInput() {
 
   return (
     <>
-      <div className="flex flex-row gap-1">
+      <div className="flex flex-row gap-1 mb-4">
         <Link
           to="/profile"
-          className="flex items-center p-0 bg-transparent justify-center font-bold text-white bg-blue-400 border-none rounded-full w-10"
+          className="flex items-center pr-2 bg-transparent justify-center font-bold text-white bg-blue-400 rounded-full scale-125"
         >
-          <img src={authUser.profilePic} className="rounded-full w-10" alt="" />
+          <img src={authUser.profilePic} className="rounded-full border-2 border-white w-10 hover:border-black" alt="" />
         </Link>
         <form onSubmit={handleSubmit} className="flex gap-2 item-center">
           <input
@@ -47,7 +47,7 @@ function SearchInput() {
               setSearch(e.target.value);
             }}
           />
-          <button type="submit" className="text-white btn btn-circle bg-sky-500">
+          <button type="submit" className="text-white btn btn-circle bg-blue-700 border-2 border-black">
             <IoSearch />
           </button>
         </form>

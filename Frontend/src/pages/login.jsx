@@ -30,18 +30,10 @@ function Login() {
                         <label className='p-2 label text-xl text-white font-semibold'><span className='text-base-label-text'>Password :</span></label>
                         <input type="password" placeholder='Enter password' className='w-full h-10 p-4 rounded-lg input-bordered' value={inputs.password} onChange={(e)=>setInputs({...inputs,password : e.target.value})}/>
                     </div>
-<<<<<<< HEAD
-                    <Link to='/verifyEmail?newRegister=false' className='inline-block mt-2 test-sm hover:underline hover:text-blue-600'>Forgot password?</Link>
-                    <br/>
-                    <Link to='/verifyEmail?newRegister=true' className='inline-block mt-2 test-sm hover:underline hover:text-blue-600'>Don't have a account?</Link>
-                    <div>
-                        <button className='mt-2 border btn btn-block btn-sm border-slate-700' type='submit' disabled={loading}>{loading ?<span className='loading loading-spinner'></span> : "Login" }</button>
-=======
                     <Link to='/verifyEmail?newRegister=false' className='inline-block mt-8 mr-8 mb-2 text-white hover:underline hover:text-black'>Forgot password?</Link>
                     <Link to='/verifyEmail?newRegister=true' className='inline-block mt-8 ml-8 mb-2 text-white hover:underline hover:text-black'>Don't have an account?</Link>
                     <div className='flex justify-center items-center'>
                         <button className='m-2 w-2/5 py-2 btn btn-block btn-sm text-2xl text-white font-semibold bg-red-500 hover:bg-green-500 border-2 border-black box-content rounded-full' type='submit' disabled={loading}>{loading ?<span className='loading loading-spinner'></span> : "Login" }</button>
->>>>>>> cssed
                     </div>
                 </form>
             </div>

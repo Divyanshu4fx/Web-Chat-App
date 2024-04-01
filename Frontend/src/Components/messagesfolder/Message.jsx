@@ -35,14 +35,12 @@ function Message({ message }) {
                         <img src={profilePic} alt="User Avatar" />
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div className={`chat-bubble text-white max-w-60 ${chatColor} ${shakeClass}`}>
                     <div style={{ wordWrap: 'break-word' }}>
                         {message.message}
                     </div>
                 </div>
                 <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime}</div>
-=======
                 {!message.isFileType && <div className={`chat-bubble text-white ${chatColor} ${shakeClass}`}>{message.message}</div>}
                 <div className='flex flex-row '>
                 {message.isFileType && <a  className={`chat-bubble text-white bg-cyan-500 ${shakeClass} `}>{message.message}</a>}
@@ -50,7 +48,6 @@ function Message({ message }) {
 
                 </div>
                 <div className='flex items-center gap-1 text-xs opacity-50 chat-footer'>{formattedTime}</div>
->>>>>>> uploads
             </div>
         )
     }

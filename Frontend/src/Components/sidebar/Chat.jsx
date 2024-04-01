@@ -10,7 +10,7 @@ function Chat({ chat, emoji, lastIndex }) {
         return (
             <>
                 <div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
-            ${isSelected ? "bg-sky-500" : ""}`}
+            ${isSelected ? "bg-blue-600" : ""}`}
                     onClick={() => setSelectedChat(chat)}
                 >
                     <div className={`avatar ${isOnline ? "online" : ""}`}>
@@ -20,7 +20,7 @@ function Chat({ chat, emoji, lastIndex }) {
                     </div>
                     <div className='flex flex-col flex-1 '>
                         <div className='flex gap-3 justify-between'>
-                            <p className='font-bold text-gray-200'>
+                            <p className='font-bold text-black text-lg'>
                                 {chat.fullname}
                             </p>
                             <span className='text-xl'>
@@ -29,7 +29,7 @@ function Chat({ chat, emoji, lastIndex }) {
                         </div>
                     </div>
                 </div>
-                {!lastIndex && <div className='divider my-0 py-0 h-1' />}
+                {!lastIndex && <div><hr className='border-t-1 border-white my-0 py-0 h-1' /></div>}
             </>
         )
     }
@@ -38,7 +38,7 @@ function Chat({ chat, emoji, lastIndex }) {
         return (
             <>
                 <div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
-            ${isSelected ? "bg-sky-500" : ""}`}
+            ${isSelected ? "bg-blue-600" : ""}`}
                     onClick={() => setSelectedChat(chat)}
                 >
                     <div className={`avatar`}>
@@ -48,7 +48,7 @@ function Chat({ chat, emoji, lastIndex }) {
                     </div>
                     <div className='flex flex-col flex-1 '>
                         <div className='flex gap-3 justify-between'>
-                            <p className='font-bold text-gray-200'>
+                            <p className='font-bold text-black text-lg'>
                                 {chat.chatName}
                             </p>
                             <span className='text-xl'>
@@ -57,7 +57,7 @@ function Chat({ chat, emoji, lastIndex }) {
                         </div>
                     </div>
                 </div>
-                {!lastIndex && <div className='divider my-0 py-0 h-1' />}
+                {!lastIndex && <div><hr className='border-t-1 border-white my-0 py-0 h-1' /></div>}
             </>
         )
     }

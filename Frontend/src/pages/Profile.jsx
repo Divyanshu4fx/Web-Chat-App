@@ -35,7 +35,7 @@ function Profile() {
         </Link>
         {/* <div className="p-4 m-4 bg-gradient-to-r from-purple-500 to-pink-500 border rounded-full h-14 w-14"></div> */}
         <div className="flex flex-col items-center justify-center p-5 text-black">
-          <h1 className="p-2 m-2 text-4xl font-bold text-center ">My Profile</h1>
+          <h1 className="p-2 mb-2 text-4xl font-bold text-center ">My Profile</h1>
           <form
             encType="multipart/form-data"
             onSubmit={handlePhotoUpload}

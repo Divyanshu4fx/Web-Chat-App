@@ -35,7 +35,7 @@ function SearchInput() {
           to="/profile"
           className="flex items-center pr-2 bg-transparent justify-center font-bold text-white bg-blue-400 rounded-full scale-125"
         >
-          <img src={authUser.profilePic} className="rounded-full border-2 border-white w-10 hover:border-black" alt="" />
+          <img src={authUser.profilePic} className="rounded-full border-2 border-black w-10 hover:border-white" alt="" />
         </Link>
         <form onSubmit={handleSubmit} className="flex gap-2 item-center">
           <input

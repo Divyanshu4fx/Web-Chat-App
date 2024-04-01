@@ -9,7 +9,7 @@ function Message({ message }) {
     const { getUser } = useGetUser();
     const fromMe = authUser._id === message.senderId;
     const messageClass = fromMe ? "chat-end" : "chat-start";
-    const chatColor = fromMe ? "bg-blue-500" : "";
+    const chatColor = fromMe ? "bg-rose-500" : "";
     const formattedTime = extractTime(message.createdAt);
     const [userData, setUserData] = useState(null);
     useEffect(() => {
@@ -39,7 +39,7 @@ function Message({ message }) {
                         {message.message}
                     </div>
                 </div>
-                <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime}</div>
+                <div className='chat-footer text-xs text-white flex gap-1 items-center'>{formattedTime}</div>
             </div>
         )
     }

@@ -10,7 +10,7 @@ function Message({ message }) {
     const { getUser } = useGetUser();
     const fromMe = authUser._id === message.senderId;
     const messageClass = fromMe ? "chat-end" : "chat-start";
-    const chatColor = fromMe ? "bg-blue-500" : "";
+    const chatColor = fromMe ? "bg-rose-500" : "";
     const formattedTime = extractTime(message.createdAt);
     const [userData, setUserData] = useState(null);
     useEffect(() => {
@@ -39,6 +39,7 @@ function Message({ message }) {
                     <div style={{ wordWrap: 'break-word' }}>
                         {message.message}
                     </div>
+<<<<<<< HEAD
                 </div> */}
                 <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime}</div>
                 {!message.isFileType && <div style={{ wordWrap: 'break-word' }} className={`chat-bubble text-white ${chatColor} ${shakeClass}`}>{message.message}</div>}
@@ -47,6 +48,10 @@ function Message({ message }) {
                 {message.isFileType && !fromMe && <a href={`http://localhost:8000/api/messages/file/${message._id}`} className={`  bg-cyan-500 border rounded-full h-fit p-1 mx-1`}><IoMdDownload/></a>}
                 </div>
                 <div className='flex items-center gap-1 text-xs opacity-50 chat-footer'>{formattedTime}</div>
+=======
+                </div>
+                <div className='chat-footer text-xs text-white flex gap-1 items-center'>{formattedTime}</div>
+>>>>>>> cssed
             </div>
         )
     }

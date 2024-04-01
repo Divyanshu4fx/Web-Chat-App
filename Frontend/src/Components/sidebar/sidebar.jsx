@@ -4,9 +4,10 @@ import Chats from './Chats'
 import LogoutButton from './LogoutButton'
 function Sidebar() {
   return (
-    <div className='border-r border-slate-500 p-4 flex flex-col'>
+    <div className='border-r-2 border-white p-4 flex flex-col'>
       <SearchInput/>
-      <div className='divider my-1'></div>
+      {/* <div className='divider my-1'></div> */}
+      <div><hr className='border-t-2 border-white mt-2'/></div>
       <Chats/>
       <LogoutButton/>
     </div>

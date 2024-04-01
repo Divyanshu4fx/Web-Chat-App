@@ -5,7 +5,7 @@ import useCreateGroup from "../hooks/useCreateGroup";
 function CreateGroup(props) {
     const [users, setUsers] = useState(props.chats.filter((object) => { if (!object.chatName && object._id !== "660913e18dba4e4ba213aafa") return object; }));
     const [selectedUser, setSelectedUser] = useState([]);
-    const { loading, createGroup } = useCreateGroup();
+    const { loading, success, createGroup } = useCreateGroup();
     const [groupName, setGroupName] = useState("");
     function handleSearch(e) {
         const input = e.target.value.toLowerCase().trim();
@@ -36,7 +36,7 @@ function CreateGroup(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await createGroup(groupName, selectedUser);
-        location.reload();
+        if (success) location.reload();
     }
     return (
         props.visibility && (

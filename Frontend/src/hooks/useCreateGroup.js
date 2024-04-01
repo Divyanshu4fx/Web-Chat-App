@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 
 const useCreateGroup = () => {
     const [loading, setLoading] = useState(false);
+    const [success,setSuccess] = useState(false);
     const createGroup = async ( groupname, user ) => {
         setLoading(true);
         if (!groupname) {
@@ -25,6 +26,7 @@ const useCreateGroup = () => {
                 throw new Error(data.error);
             }
             toast.success(data.message);
+            setSuccess(true);
         } catch (e) {
             toast.error(e.message);
         }
@@ -32,7 +34,7 @@ const useCreateGroup = () => {
             setLoading(false);
         }
     }
-    return { loading, createGroup };
+    return { loading,success ,createGroup };
 }
 
 export default useCreateGroup;

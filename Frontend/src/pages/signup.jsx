@@ -15,7 +15,7 @@ function SignUp() {
     }
   );
 
-  // const email = location.state.email || "";
+  const email = location.state.email || "";
   const { loading, signup, errorMessage, isButtonDisabled, validate } = useSignup();
 
   const handleCheckboxChange = (gender) => {

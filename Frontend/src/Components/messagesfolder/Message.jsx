@@ -3,6 +3,7 @@ import { useAuthContext } from '../../context/authContext';
 import useConversation from "../../zustand/useConversation";
 import useGetUser from "../../hooks/useGetUser";
 import { extractTime } from '../../utils/extractTime';
+import { IoMdDownload } from "react-icons/io";
 function Message({ message }) {
     const { authUser } = useAuthContext();
     const { selectedChat } = useConversation();
@@ -34,8 +35,13 @@ function Message({ message }) {
                         <img src={profilePic} alt="User Avatar" />
                     </div>
                 </div>
-                <div className={`chat-bubble text-white ${chatColor} ${shakeClass}`}>{message.message}</div>
-                <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime}</div>
+                {!message.isFileType && <div className={`chat-bubble text-white ${chatColor} ${shakeClass}`}>{message.message}</div>}
+                <div className='flex flex-row '>
+                {message.isFileType && <a  className={`chat-bubble text-white bg-cyan-500 ${shakeClass} `}>{message.message}</a>}
+                {message.isFileType && !fromMe && <a href={`http://localhost:8000/api/messages/file/${message._id}`} className={`  bg-cyan-500 border rounded-full h-fit p-1 mx-1`}><IoMdDownload/></a>}
+
+                </div>
+                <div className='flex items-center gap-1 text-xs opacity-50 chat-footer'>{formattedTime}</div>
             </div>
         )
     }
@@ -59,7 +65,7 @@ function Message({ message }) {
                 <div className={`chat-bubble text-white ${chatColor} `}>{message.message}
                     <div className='text-white' style={{fontSize :'8px'}}>{fullname}</div>
                 </div>
-                <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime}</div>
+                <div className='flex items-center gap-1 text-xs opacity-50 chat-footer'>{formattedTime}</div>
             </div>
         )
     }

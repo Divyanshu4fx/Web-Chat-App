@@ -6,6 +6,7 @@ import useChat from '../../zustand/useConversation.js';
 import { useAuthContext } from '../../context/authContext.jsx';
 function MessageContainer() {
   const { selectedChat, setSelectedChat } = useChat();
+  console.log(selectedChat);
   useEffect(() => {
     return () => setSelectedChat(null);
   }, [setSelectedChat])
@@ -26,11 +27,16 @@ function MessageContainer() {
   }
   else {
     return (
-      <div className='md:min-w-[450px] flex flex-col'>
+      <div className='md:min-w-[450px] flex flex-col max'>
         {!selectedChat ? <NoChatSelected /> : (
           <>
             <div className='bg-slate-500 px-4 py-2 mb-2'>
               <span className='label-text'>To : </span><span className='text-gray-900 font-bold'>{selectedChat.chatName}</span>
+              <div className='flex'>
+                {selectedChat.participants.map((participant, idx) => (
+                  <span  className='text-white bg-red-500 mx-0.5 p-0.5 text-xs rounded-lg' key={idx}>{participant.fullname}</span>
+                ))}
+              </div>
             </div>
             <Messages />
             <MessageInput />

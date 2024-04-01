@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, message } from "antd";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const VerifyEmail = () => {
   const navigate = useNavigate();
@@ -9,15 +10,16 @@ const VerifyEmail = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const newRegister = searchParams.get("newRegister");
-  console.log(newRegister);
+  const [loading, setLoading] = useState(false);
   async function sendOTPHandler(values) {
+    setLoading(true);
     try {
-   
+
       const res = await axios.post("/api/auth/verifyEmail", {
         ...values,
         newRegister,
       });
-     
+
       if (res.data.success) {
         message.success(res.data.message);
         navigate("/verifyOTP", { state: { email: values.email, newRegister } });
@@ -25,21 +27,24 @@ const VerifyEmail = () => {
         message.error(res.data.message);
       }
     } catch (error) {
-   
+
       console.log(error);
       if (error.response) {
-        // Server responded with an error
         if (error.response.status === 400) {
           message.error(error.response.data.message);
         } else {
-          console.log(
-            "Error in sendOTP handler: " + error.response.data.message
-          );
+          toast.error("error");
+          // console.log(
+          //   "Error in sendOTP handler: " + error.response.data.message
+          // );
         }
       } else {
-        // Network or client-side error
-        console.log("Network or client-side error: " + error.message);
+        toast.error(error.message);
+        // console.log("Network or client-side error: " + error.message);
       }
+    }
+    finally {
+      setLoading(false);
     }
   }
 
@@ -69,12 +74,11 @@ const VerifyEmail = () => {
           <Link to="/login" className="m-2 text-blue-400">
             Already registered? Login from here
           </Link>
-
           <button
             type="submit"
             className="px-4 py-2 font-bold text-white bg-blue-400 border rounded roundedbg-blue-500 hover:bg-blue-700"
           >
-            Send OTP
+            {loading ? <span className="loading loading-spinner"></span> : "Send OTP"}
           </button>
         </Form>
       </div>

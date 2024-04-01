@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Form, Input, message } from "antd";
 import axios from "axios";
@@ -6,11 +6,12 @@ import axios from "axios";
 const VerifyOTP = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [loading,setLoading] = useState(false);
   const email = location.state.email || "";
   const newRegister = location.state.newRegister || false;
 
   const verifyOTPHandler = async (values) => {
+    setLoading(true);
     try {
 
       const res = await axios.post("/api/auth/verifyOTP", {
@@ -44,10 +45,13 @@ const VerifyOTP = () => {
         console.log("Network or client-side error: " + error.message);
       }
     }
+    finally
+    {
+      setLoading(true);
+    }
   };
   return (
     <div className="flex items-center justify-center w-3/12 bg-red-500 bg-opacity-0 border rounded-lg shadow-md bg-clip-padding backdrop-filter backdrop-blur-lg ">
-     
       <Form
         layout="vertical"
         onFinish={verifyOTPHandler}
@@ -70,7 +74,7 @@ const VerifyOTP = () => {
             type="submit"
             className="px-4 py-2 font-bold text-white bg-blue-400 border rounded roundedbg-blue-500 hover:bg-blue-700"
           >
-            Verify your OTP
+            {loading ? <span className="loading loading-spinner"></span> : "Verify your OTP"}
           </button>
         </div>
       </Form>

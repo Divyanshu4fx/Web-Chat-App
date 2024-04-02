@@ -72,7 +72,7 @@ function SignUp() {
           </div>
           <Link className='text-white text-center inline-block mt-4 text-sm hover:underline hover:text-black' to="/login">Already have an account?</Link>
           <div className='flex justify-center'>
-            <button className='mt-2 shadow-md shadow-black py-2 box-content font-semibold rounded-xl w-2/5 text-xl text-white bg-red-500 hover:bg-green-500' type='submit'>{loading ? <span className='loading loading-spinner'></span> : "SignUp"}</button>
+            <button className='m-2 py-2 btn  btn-sm text-2xl w-2/5 text-white font-semibold bg-red-500 hover:bg-green-500 shadow-md shadow-black box-content rounded-2xl' type='submit'>{loading ? <span className='loading loading-spinner'></span> : "SignUp"}</button>
           </div>
         </form>
       </div>

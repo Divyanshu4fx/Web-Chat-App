@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { Link } from 'react-router-dom'
 import { useAuthContext } from "../../context/authContext";
 import CreateGroup from "../../modals/createGroup";
-
+import SearchList from "../../modals/searchlist";
 function SearchInput() {
   const [visibility, setVisibility] = useState(false);
   const [search, setSearch] = useState();
@@ -16,6 +16,7 @@ function SearchInput() {
   const { authUser } = useAuthContext();
   const handleSubmit = (e) => {
     e.preventDefault();
+    setEnableSearch(true);
   //   if (!search) return;
   //   if (search.length < 3) {
   //     return toast.error("Search term must be 3 characters long");
@@ -40,7 +41,7 @@ function SearchInput() {
 
   return (
     <>
-      {enableSearch && <SearchList setSelectedChat={setSelectedChat} chats={chats} enableSearch={enableSearch} />}
+      {enableSearch && <SearchList setSelectedChat={setSelectedChat} chats={chats} enableSearch={enableSearch} search={search} setSearch={setSearch} setEnableSearch={setEnableSearch} />}
       <div className="flex flex-row gap-1 mb-4">
         <Link
           to="/profile"
@@ -56,6 +57,7 @@ function SearchInput() {
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
+              handleSubmit(e);
             }}
           />
           <button type="submit" className="text-white btn btn-circle bg-blue-700 border-2 border-black">

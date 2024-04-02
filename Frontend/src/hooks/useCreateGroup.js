@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import toast from "react-hot-toast";
-
 const useCreateGroup = () => {
     const [loading, setLoading] = useState(false);
-    const [success,setSuccess] = useState(false);
     const createGroup = async ( groupname, user ) => {
         setLoading(true);
         if (!groupname) {
             toast.error("Groupname is required");
+            setLoading(false);
             return;
         }
         if (user < 2) {
             toast.error("Group must have more than 2 members.");
+            setLoading(false);
             return;
         }
         const participants = user.map(user => user._id);
@@ -26,7 +26,7 @@ const useCreateGroup = () => {
                 throw new Error(data.error);
             }
             toast.success(data.message);
-            setSuccess(true);
+            location.reload();
         } catch (e) {
             toast.error(e.message);
         }
@@ -34,7 +34,6 @@ const useCreateGroup = () => {
             setLoading(false);
         }
     }
-    return { loading,success ,createGroup };
+    return { loading,createGroup };
 }
-
 export default useCreateGroup;

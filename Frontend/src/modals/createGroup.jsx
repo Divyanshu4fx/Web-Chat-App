@@ -5,7 +5,7 @@ import useCreateGroup from "../hooks/useCreateGroup";
 function CreateGroup(props) {
     const [users, setUsers] = useState(props.chats.filter((object) => { if (!object.chatName && object._id !== "660913e18dba4e4ba213aafa") return object; }));
     const [selectedUser, setSelectedUser] = useState([]);
-    const { loading, success, createGroup } = useCreateGroup();
+    const { loading, createGroup } = useCreateGroup();
     const [groupName, setGroupName] = useState("");
     function handleSearch(e) {
         const input = e.target.value.toLowerCase().trim();
@@ -36,7 +36,10 @@ function CreateGroup(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await createGroup(groupName, selectedUser);
-        if (success) location.reload();
+        console.log(success);
+        if (success) {
+            location.reload();
+        }
     }
     return (
         props.visibility && (
@@ -49,7 +52,7 @@ function CreateGroup(props) {
                     <input className='input' type='text' placeholder='Enter Group Name' value={groupName} onChange={(e) => setGroupName(e.target.value)} />
                     <label className='label text-black'>Select Participants</label>
                     <input className='input' type='text' placeholder='Eg. John Doe' onChange={handleSearch} />
-                    <button type='submit' className='text-white my-1 py-1 rounded-lg bg-slate-700' onClick={handleSubmit}>Create Group</button>
+                    <button type='submit' className='text-white my-1 py-1 rounded-lg bg-slate-700' onClick={handleSubmit}>{loading ?<span className='loading loading-spinner'></span> : "Create Group"}</button>
                     <div className='flex cursor-pointer' style={{ overflowX: "auto", maxWidth: "300px", }}>
                         {selectedUser.map((element) => (
                             <span key={element._id} className='bg-red-500 text-xs p-1 mr-0.5 text-white rounded-lg' style={{ flexShrink: 0 }} onClick={() => handleDelete(element._id)}>

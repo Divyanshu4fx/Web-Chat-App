@@ -50,16 +50,17 @@ const VerifyEmail = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center bg-red-500 bg-opacity-0 border rounded-lg shadow-md bg-clip-padding backdrop-filter backdrop-blur-lg form-container">
+      <div className="flex items-center justify-center p-4 bg-red-500 bg-opacity-0 border rounded-lg shadow-md bg-clip-padding backdrop-filter backdrop-blur-lg form-container border-2 border-white shadow-md shadow-black ">
         <Form
           layout="vertical"
           onFinish={sendOTPHandler}
           className="p-4 w-3/8"
         >
-          <h1 className="py-5 text-4xl text-center">Enter email</h1>
+          <h1 className="text-4xl font-bold text-center text-black underline m-4 mb-8">Enter email</h1>
 
+         
           <Form.Item
-            label="email"
+            label ={<span className="text-xl">Email</span>}
             name="email"
             rules={[
               {
@@ -69,17 +70,21 @@ const VerifyEmail = () => {
               },
             ]}
           >
-            <Input type="text" required placeholder="Your email" />
+            <Input type="text" required placeholder="Your email" className="font-semibold text-black"/>
           </Form.Item>
-          <Link to="/login" className="m-2 text-blue-400">
+          <div className="flex-row justify-content">
+          <Link to="/login" className="m-2 text-white hover:text-black">
             Already registered? Login from here
           </Link>
+          </div>
+          <div className=" flex flex-row justify-center">
           <button
             type="submit"
-            className="px-4 py-2 font-bold text-white bg-blue-400 border rounded roundedbg-blue-500 hover:bg-blue-700"
+            className="m-2 w-2/5 py-2 text-sm text-white font-semibold bg-red-500 hover:bg-green-500 shadow-md shadow-black rounded-2xl "
           >
             {loading ? <span className="loading loading-spinner"></span> : "Send OTP"}
           </button>
+          </div>
         </Form>
       </div>
     </>

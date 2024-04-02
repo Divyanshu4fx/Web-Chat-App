@@ -51,30 +51,30 @@ const VerifyOTP = () => {
     }
   };
   return (
-    <div className="flex items-center justify-center w-3/12 bg-red-500 bg-opacity-0 border rounded-lg shadow-md bg-clip-padding backdrop-filter backdrop-blur-lg ">
+    <div className="flex items-center justify-center p-4 bg-red-500 bg-opacity-0 border rounded-lg shadow-md bg-clip-padding backdrop-filter backdrop-blur-lg form-container border-2 border-white shadow-md shadow-black ">
       <Form
         layout="vertical"
         onFinish={verifyOTPHandler}
         className="p-4 w-3/8"
       >
-        <h1 className="py-5 text-4xl text-center">Enter OTP</h1>
-        <div className="text-xl">{email}</div>
+        <h1 className="text-4xl font-bold text-center text-black underline m-4 mb-8">Enter OTP</h1>
+        <div className="text-xl font-semibold">{email}</div>
         <Form.Item label="OTP" name="OTP" required>
-          <Input type="text" required placeholder="Enter the OTP" />
+          <Input type="text" required placeholder="Enter the OTP" className="font-semibold text-black"/>
         </Form.Item>
 
-        <div>
+        <div className="flex items-center justify-center">
           <Link
             to={`/verifyEmail?newRegister=${newRegister}`}
-            className="px-4 py-2 m-2 font-bold text-white bg-blue-400 border rounded roundedbg-blue-500 hover:bg-blue-700 "
+            className="m-3 w-2/5 text-center py-1 px-1 text-lg text-white font-semibold bg-red-500 hover:bg-green-500 hover:text-white shadow-md shadow-black rounded-2xl"
           >
             Back
           </Link>
           <button
             type="submit"
-            className="px-4 py-2 font-bold text-white bg-blue-400 border rounded roundedbg-blue-500 hover:bg-blue-700"
+            className="m-2 w-2/5 py-2 text-sm text-white font-semibold bg-red-500 hover:bg-green-500 shadow-md shadow-black rounded-2xl"
           >
-            {loading ? <span className="loading loading-spinner"></span> : "Verify your OTP"}
+            {loading ? <span className="flex items-center text-center loading loading-spinner"></span> : "Verify your OTP"}
           </button>
         </div>
       </Form>

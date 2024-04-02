@@ -65,7 +65,7 @@ function MessageInput() {
         <div className="relative bg-gray-700 rounded-md w-full gap-1 flex items-center justify-center">
 
           <span className="pl-2" onClick={() => setShowPicker(!showPicker)}>
-            {!showPicker && <span className="cursor-point"><MdEmojiEmotions /></span>}
+             <span className="cursor-point"><MdEmojiEmotions /></span>
           </span>
           {showPicker && (
             <div className="absolute bottom-0 mb-10 left-0 z-10">

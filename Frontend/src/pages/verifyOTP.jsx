@@ -30,7 +30,6 @@ const VerifyOTP = () => {
     } catch (error) {
      
       if (error.response) {
-        // Server responded with an error
         if (error.response.status === 401) {
           message.error("OTP is incorrect");
         } else {
@@ -47,7 +46,7 @@ const VerifyOTP = () => {
     }
     finally
     {
-      setLoading(true);
+      setLoading(false);
     }
   };
   return (

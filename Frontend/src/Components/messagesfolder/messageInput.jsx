@@ -56,9 +56,14 @@ function MessageInput() {
   }, [file]
   )
   return (
-    <div>
-      <form className="px-4 my-3" onSubmit={handleSubmit}>
+    <div className="flex ml-2 justify-center items-center">
+      {!selectedChat.chatName && <div style={{ margin: "0px", maxWidth: "20px" }}>
+        <button onClick={() => onUploadClick()} className="rounded bg-gray-700 py-3 p-2 ml-0.5 text-white"><MdAttachFile /></button>
+        <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" />
+      </div>}
+      <form className="px-4 my-3 flex-1" onSubmit={handleSubmit}>
         <div className="relative bg-gray-700 rounded-md w-full gap-1 flex items-center justify-center">
+
           <span className="pl-2" onClick={() => setShowPicker(!showPicker)}>
             {!showPicker && <span className="cursor-point"><MdEmojiEmotions /></span>}
           </span>
@@ -72,10 +77,6 @@ function MessageInput() {
               />
             </div>
           )}
-          {!selectedChat.chatName && <div style={{ margin: "0px", maxWidth: "20px" }}>
-            <button onClick={() => onUploadClick()} className="rounded bg-gray-700 text-white"><MdAttachFile /></button>
-            <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" />
-          </div>}
           <input
             type="text"
             className=" flex-1 text-sm rounded-lg block w-11/12 p-2.5 bg-gray-700 border-gray-600 text-white"

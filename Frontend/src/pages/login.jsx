@@ -33,7 +33,7 @@ function Login() {
                     <Link to='/verifyEmail?newRegister=false' className='inline-block mt-8 mr-8 mb-2 text-white hover:underline hover:text-black'>Forgot password?</Link>
                     <Link to='/verifyEmail?newRegister=true' className='inline-block mt-8 ml-8 mb-2 text-white hover:underline hover:text-black'>Don't have an account?</Link>
                     <div className='flex justify-center items-center'>
-                        <button className='m-2 w-2/5 py-2 btn btn-block btn-sm text-2xl text-white font-semibold bg-red-500 hover:bg-green-500 border-2 border-black box-content rounded-full' type='submit' disabled={loading}>{loading ?<span className='loading loading-spinner'></span> : "Login" }</button>
+                        <button className='m-2 w-2/5 py-2 btn btn-block btn-sm text-2xl text-white font-semibold bg-red-500 hover:bg-green-500 shadow-md shadow-black box-content rounded-2xl' type='submit' disabled={loading}>{loading ?<span className='loading loading-spinner'></span> : "Login" }</button>
                     </div>
                 </form>
             </div>

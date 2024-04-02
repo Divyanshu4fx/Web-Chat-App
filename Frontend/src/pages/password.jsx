@@ -23,7 +23,7 @@ function PasswordRest() {
       <div className=" flex flex-col p-5 w-5/12 border-2 border-white rounded-xl shadow-md shadow-black backdrop-filter backdrop-blur-xl bg-opacity-0">
         <Link
           to="/"
-          className="p-2 m-4 bg-violet-800 border-2 border-white border-dashed rounded-full h-fit w-fit scale-150 text-white hover:text-black hover:border-black"
+          className="p-2 m-4 bg-violet-800 border-2 border-white border rounded-full h-fit w-fit scale-150 text-white hover:text-black hover:border-black"
         >
           <IoMdHome />
         </Link>

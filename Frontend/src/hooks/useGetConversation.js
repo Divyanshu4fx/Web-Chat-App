@@ -35,7 +35,7 @@ const useGetConversation = () => {
         fetchData();
     }, []);
 
-    return { loading, chats };
+    return { loading, chats , setChats };
 };
 
 export default useGetConversation;

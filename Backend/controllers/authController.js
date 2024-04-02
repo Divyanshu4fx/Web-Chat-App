@@ -70,6 +70,7 @@ const login = async (req, res) => {
             _id: user._id,
             fullname: user.fullname,
             username: user.username,
+            email : user.email,
             gender: user.gender,
             profilePic: user.profilePic,
         });

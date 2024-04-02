@@ -18,10 +18,10 @@ function useSignup() {
         minSymbols: 1,
       })
     ) {
-      setErrorMessage("Is Strong Password");
+      setErrorMessage("Strong Password");
       setButtonDisabled(false);
     } else {
-      setErrorMessage("Is Not Strong Password");
+      setErrorMessage("Password Is Not Strong ");
       setButtonDisabled(true);
     }
     if (value === "") {

@@ -10,6 +10,7 @@ import useUpdateData from "../hooks/useUpdateData.js";
 function Profile() {
   const { authUser } = useAuthContext();
   const [user, setUser] = useState(authUser);
+  console.log(user);
   const [editMode, setEditMode] = useState(false);
   const { loadingI, handleUpload } = useUpdateProfile();
   const { loadingD, handleData } = useUpdateData();
@@ -19,17 +20,15 @@ function Profile() {
     location.reload();
   };
   const handleDataUpdate = async (formData) => {
-    // setUser(formData);
-    console.log(formData);
     await handleData(formData);
     location.reload();
   };
   return (
-    <div className="flex flex-row h-full w-2/3 bg-opacity-0 border-2 border-white rounded-2xl backdrop-filter backdrop-blur-lg">
+    <div className="flex flex-row h-full w-2/3 bg-opacity-0 border-2 border-white rounded-2xl shadow-md shadow-black backdrop-filter backdrop-blur-lg">
       <div className="flex flex-col border-r-2 border-white w-5/12">
         <Link
           to="/"
-          className="p-2 m-4 bg-rose-500 border-2 border-white border-dashed rounded-full h-fit w-fit scale-150 text-white hover:text-black hover:border-black"
+          className="p-2 m-4 bg-rose-500 border-2 border-white border rounded-full h-fit w-fit scale-150 text-white hover:text-black hover:border-black"
         >
           <IoMdHome />
         </Link>
@@ -63,7 +62,7 @@ function Profile() {
             {editMode && (
               <button
                 type="submit"
-                className="bg-violet-800 text-white text-lg font-bold p-2 border-2 border-black rounded-lg mt-4 hover:bg-white hover:text-violet-800"
+                className="bg-violet-800 text-white text-lg font-bold p-2 shadow-md shadow-black rounded-lg mt-4 hover:bg-white hover:text-violet-800"
               >
                 {loadingI ? (
                   <span className="loading loading-spinner"></span>
@@ -75,9 +74,9 @@ function Profile() {
           </form>
           {!editMode && (
             <>
-              <div className="flex-col text-3xl underline">{user.fullname}</div>
-			  <div className="flex-col text-2xl underline">{user.email}</div>         {/*to be checked later*/}
-              <div className="flex-col text-2xl underline">{user.username}</div>
+              <div className="flex-col text-3xl">{user.fullname}</div>
+              <div className="flex-col text-2xl">@{user.username}</div>
+			        <div className="flex-col text-1xl underline">{user.email}</div>         {/*to be checked later*/}
             </>
           )}
         </div>
@@ -85,7 +84,7 @@ function Profile() {
       <div className="flex flex-col items-center justify-center flex-1 p-5">
         {!editMode && (
           <button
-            className="px-5 py-3 m-6 text-2xl font-bold text-white bg-blue-400 border-2 border-black rounded-lg bg-red-500 hover:bg-rose-700"
+            className="px-5 py-3 m-6 text-2xl font-bold text-white shadow-md shadow-black rounded-lg bg-red-500 hover:bg-rose-700"
             onClick={() => setEditMode(true)}
           >
             Edit Profile
@@ -106,7 +105,7 @@ function Profile() {
               </Radio.Group>
             </Form.Item>
             <button
-              className="px-4 py-2 m-4 font-bold text-white bg-violet-800 border-2 border-black rounded-lg hover:text-violet-800 hover:bg-white"
+              className="px-4 py-2 m-4 font-bold text-white bg-violet-800 shadow-md shadow-black rounded-lg hover:text-violet-800 hover:bg-white"
               type="submit"
             >
               {loadingD ? (
@@ -116,7 +115,7 @@ function Profile() {
               )}
             </button>
             <button
-              className="px-4 py-2 m-4 font-bold text-white bg-neutral-800 border-2 border-black rounded-lg roundedbg-gray-500 hover:text-neutral-800 hover:bg-white"
+              className="px-4 py-2 m-4 font-bold text-white bg-neutral-800 border-2 shadow-md shadow-black border-black rounded-lg roundedbg-gray-500 hover:text-neutral-800 hover:bg-white"
               onClick={() => setEditMode(false)}
             >
               Cancel
@@ -125,7 +124,7 @@ function Profile() {
         )}
         <Link
           to="/reset"
-          className="inline px-4 py-2 m-4 font-bold text-2xl text-white bg-red-500 hover:bg-rose-700 rounded-lg border-2 border-black"
+          className="inline px-4 py-2 m-4 font-bold text-2xl text-white bg-red-500 hover:bg-rose-700 rounded-lg shadow-md shadow-black "
         >
           Change Password
         </Link>

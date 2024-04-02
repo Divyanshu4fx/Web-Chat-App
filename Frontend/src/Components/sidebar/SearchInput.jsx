@@ -8,28 +8,39 @@ import { useAuthContext } from "../../context/authContext";
 import CreateGroup from "../../modals/createGroup";
 
 function SearchInput() {
-  const [visibility,setVisibility] = useState(false);
+  const [visibility, setVisibility] = useState(false);
   const [search, setSearch] = useState();
+  const [enableSearch ,setEnableSearch] = useState(false);
   const { setSelectedChat } = useChat();
-  const { chats } = useGetConversation();
+  const { chats, setChats } = useGetConversation();
   const { authUser } = useAuthContext();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!search) return;
-    if (search.length < 3) {
-      return toast.error("Search term must be 3 characters long");
-    }
-    const chat = chats.find((c) =>
-      c.fullname.toLowerCase().includes(search.toLowerCase())
-    );
-    if (chat) {
-      setSelectedChat(chat);
-      setSearch("");
-    }
+  //   if (!search) return;
+  //   if (search.length < 3) {
+  //     return toast.error("Search term must be 3 characters long");
+  //   }
+  //   const filteredChats = chats.filter((c) =>
+  //     (c.fullname?.toLowerCase().includes(search.toLowerCase())) ||
+  //     (c.chatName?.toLowerCase().includes(search.toLowerCase()))
+  //   );
+  //   // const chat = chats.find((c) =>
+  //   //   c.fullname.toLowerCase().includes(search.toLowerCase())
+  //   // );
+  //   console.log(filteredChats);
+  //   if (filteredChats) {
+  //     setChats(filteredChats);
+  //   }
+  //   // if (chat) {
+  //   //   setSelectedChat(chat);
+  //   //   setSearch("");
+  //   // }
+    return;
   };
 
   return (
     <>
+      {enableSearch && <SearchList setSelectedChat={setSelectedChat} chats={chats} enableSearch={enableSearch} />}
       <div className="flex flex-row gap-1 mb-4">
         <Link
           to="/profile"
@@ -41,7 +52,7 @@ function SearchInput() {
           <input
             type="text"
             placeholder="Search..."
-            className="rounded-full input input-bordered"
+            className="rounded-full  input input-bordered"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
@@ -52,7 +63,7 @@ function SearchInput() {
           </button>
         </form>
       </div>
-      <button className="text-white bg-black inline-block p-1 rounded-md mt-1 hover:bg-slate-900" onClick={()=>setVisibility(true)}>+ Create Group</button>
+      <button className="text-white bg-black inline-block p-1 rounded-md mt-1 hover:bg-slate-900" onClick={() => setVisibility(true)}>+ Create Group</button>
       <CreateGroup visibility={visibility} setVisibility={setVisibility} chats={chats} />
     </>
   );

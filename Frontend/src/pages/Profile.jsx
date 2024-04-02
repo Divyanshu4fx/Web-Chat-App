@@ -44,7 +44,7 @@ function Profile() {
               <img
                 src={user.profilePic}
                 alt="Profile Image"
-                className="rounded-full max-w-24 border-2 border-black"
+                className="rounded-full w-24 h-24 border-2 border-black"
               />
               {editMode && (
                 <label htmlFor="photo" className="cursor-pointer">

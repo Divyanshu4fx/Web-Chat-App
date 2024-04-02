@@ -56,9 +56,7 @@ const VerifyEmail = () => {
           onFinish={sendOTPHandler}
           className="p-4 w-3/8"
         >
-          <h1 className="text-4xl font-bold text-center text-black underline m-4 mb-8">Enter email</h1>
-
-         
+          <h1 className="text-4xl font-bold text-center text-black underline m-4 mb-8">Enter Email</h1>
           <Form.Item
             label ={<span className="text-xl">Email</span>}
             name="email"
@@ -73,14 +71,14 @@ const VerifyEmail = () => {
             <Input type="text" required placeholder="Your email" className="font-semibold text-black"/>
           </Form.Item>
           <div className="flex-row justify-content">
-          <Link to="/login" className="m-2 text-white hover:text-black">
+          <Link to="/login" className="m-2 text-white hover:text-black hover:underline">
             Already registered? Login from here
           </Link>
           </div>
           <div className=" flex flex-row justify-center">
           <button
             type="submit"
-            className="m-2 w-2/5 py-2 text-sm text-white font-semibold bg-red-500 hover:bg-green-500 shadow-md shadow-black rounded-2xl "
+            className="m-2 w-2/5 py-2 text-sm text-white font-semibold bg-red-500 hover:bg-green-500 shadow-md shadow-black rounded-lg "
           >
             {loading ? <span className="loading loading-spinner"></span> : "Send OTP"}
           </button>

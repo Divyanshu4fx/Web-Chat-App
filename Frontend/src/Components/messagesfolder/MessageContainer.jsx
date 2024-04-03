@@ -6,7 +6,6 @@ import useChat from '../../zustand/useConversation.js';
 import { useAuthContext } from '../../context/authContext.jsx';
 function MessageContainer() {
   const { selectedChat, setSelectedChat } = useChat();
-  console.log(selectedChat);
   useEffect(() => {
     return () => setSelectedChat(null);
   }, [setSelectedChat])

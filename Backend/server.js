@@ -25,17 +25,17 @@ app.use("/api/update/", updateRouter);
 app.use("/api/group/", groupRouter);
 app.use("/api/ai", aiRouter);
 
-fs.readdir(path.join(__dirname,".."), (err, files) => {
-    if (err) {
-      console.error('Error reading directory:', err);
-      return;
-    }
+// fs.readdir(path.join(__dirname,".."), (err, files) => {
+//     if (err) {
+//       console.error('Error reading directory:', err);
+//       return;
+//     }
     
-    console.log('Files in current directory:');
-    files.forEach(file => {
-      console.log(file);
-    });
-  });
+//     console.log('Files in current directory:');
+//     files.forEach(file => {
+//       console.log(file);
+//     });
+//   });
 
 app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 app.get("*", (req, res) => {

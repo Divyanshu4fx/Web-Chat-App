@@ -86,8 +86,9 @@ const uploadFile = async (req, res) => {
     }
     await conversation.save()
     const recevierSocketId = getReceiverSocketId(reciverId);
+    console.log(file);
     if (recevierSocketId) {
-      io.to(recevierSocketId).emit("newMessage", newMessage);
+      io.to(recevierSocketId).emit("newMessage", file);
     }
     res.status(201).json(file);
   } catch (error) {
@@ -101,6 +102,7 @@ const uploadFile = async (req, res) => {
 const downloadFile = async (req, res) => {
   try {
     const file = await Message.findById(req.params.fileId);
+    console.log(file.path);
     res.download(file.path, file.message);
   } catch (error) {
     console.log("Error in downloadFile controller " + error);

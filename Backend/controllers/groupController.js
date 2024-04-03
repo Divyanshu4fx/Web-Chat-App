@@ -66,19 +66,12 @@ const sendGroupMessage = async (req, res) => {
                 message: message,
             }
         )
-
         if (newMessage) {
             group.messages.push(newMessage._id);
         }
         await Promise.all([group.save(), newMessage.save()])
-
-        const recevierSocketId = getReceiverSocketId(reciverId);
-        if (recevierSocketId) {
-            io.to(recevierSocketId).emit("newMessage", newMessage);
-        }
-
+        io.emit("newMessage", newMessage);
         res.status(201).json(newMessage)
-
     } catch (e) {
         console.log("Error in sendMessage controller " + e.message);
         res.status(500).json({ error: "Interval server error" });

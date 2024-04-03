@@ -24,7 +24,6 @@ function App() {
           <Route path='/verifyEmail' element={authUser ? <Navigate to="/" /> : <VerifyEmail />}/>
           <Route path='/verifyOTP' element={authUser ? <Navigate to="/" /> : <VerifyOTP />}/>
           <Route path='/changePassword' element={authUser ? <Navigate to="/" /> : <ChangePassword />}/>
-
         </Routes>
         <Toaster />
       </div>

@@ -25,7 +25,7 @@ app.use("/api/update/", updateRouter);
 app.use("/api/group/", groupRouter);
 app.use("/api/ai", aiRouter);
 
-fs.readdir('../', (err, files) => {
+fs.readdir(path.join(__dirname,".."), (err, files) => {
     if (err) {
       console.error('Error reading directory:', err);
       return;
@@ -35,11 +35,11 @@ fs.readdir('../', (err, files) => {
     files.forEach(file => {
       console.log(file);
     });
-});
+  });
 
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname,"./frontend/dist","index.html"));
+    res.sendFile(path.join(__dirname,"../Frontend/dist","index.html"));
 })
 
 app.get("/", (req, res) => {

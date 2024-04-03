@@ -63,16 +63,16 @@ const uploadFile = async (req, res) => {
     const { id: reciverId } = req.params;
     const senderId = req.user._id;
     let conversation = await Convsersation.findOne({
-        participants: { $all: [senderId, reciverId] },
+      participants: { $all: [senderId, reciverId] },
+    });
+
+    if (!conversation) {
+      conversation = await Convsersation.create({
+        participants: [senderId, reciverId],
       });
-  
-      if (!conversation) {
-        conversation = await Convsersation.create({
-          participants: [senderId, reciverId],
-        });
-      }
-  
-     
+    }
+
+
     const fileObj = {
       senderId: req.user._id,
       reciverId,
@@ -82,10 +82,14 @@ const uploadFile = async (req, res) => {
     };
     const file = await Message.create(fileObj);
     if (file) {
-        conversation.messages.push(file._id);
-      }
-      await conversation.save()
-      res.status(201).json(file);
+      conversation.messages.push(file._id);
+    }
+    await conversation.save()
+    const recevierSocketId = getReceiverSocketId(reciverId);
+    if (recevierSocketId) {
+      io.to(recevierSocketId).emit("newMessage", newMessage);
+    }
+    res.status(201).json(file);
   } catch (error) {
     console.log("Error in uploadFile controller " + error);
     res.status(500).json({

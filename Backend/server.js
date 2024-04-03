@@ -25,7 +25,7 @@ app.use("/api/update/", updateRouter);
 app.use("/api/group/", groupRouter);
 app.use("/api/ai", aiRouter);
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
+console.log(__dirname);
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "fronted", "dist", "index.html"));
 })

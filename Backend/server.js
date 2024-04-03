@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 
 const authRouter = require('./routes/authRoutes.js');
 const connectToMongoDB = require('./DB/connectToDb.js');
@@ -14,7 +15,6 @@ const { app, server } = require("./socket/socket.js");
 
 
 const PORT = process.env.PORT || 5000;
-// const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
@@ -24,8 +24,22 @@ app.use("/api/users/", userRouter);
 app.use("/api/update/", updateRouter);
 app.use("/api/group/", groupRouter);
 app.use("/api/ai", aiRouter);
+
+fs.readdir('./', (err, files) => {
+    if (err) {
+      console.error('Error reading directory:', err);
+      return;
+    }
+    
+    console.log('Files in current directory:');
+    files.forEach(file => {
+      console.log(file);
+    });
+});
+
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 console.log(__dirname);
+console.log(path.join(__dirname, "../frontend/dist"));
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "fronted", "dist", "index.html"));
 })

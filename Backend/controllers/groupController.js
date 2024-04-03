@@ -39,7 +39,6 @@ const getGroups = async (req, res) => {
     const loggedUserId = req.user._id;
     try {
         const groups = await GroupChat.find({ participants: loggedUserId }).populate('participants', 'fullname');
-        // const groups = await GroupChat.find({ participants: loggedUserId }).populate('participants');
         if (groups.length === 0) {
             res.status(400).json([]);
             return;
@@ -73,10 +72,10 @@ const sendGroupMessage = async (req, res) => {
         }
         await Promise.all([group.save(), newMessage.save()])
 
-        // const recevierSocketId = getReceiverSocketId(reciverId);
-        // if (recevierSocketId) {
-        //     io.to(recevierSocketId).emit("newMessage", newMessage);
-        // }
+        const recevierSocketId = getReceiverSocketId(reciverId);
+        if (recevierSocketId) {
+            io.to(recevierSocketId).emit("newMessage", newMessage);
+        }
 
         res.status(201).json(newMessage)
 

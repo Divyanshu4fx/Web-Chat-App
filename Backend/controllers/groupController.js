@@ -1,6 +1,7 @@
 const e = require("express");
 const GroupChat = require("../models/groupChatModel");
 const GroupMessage = require("../models/groupMessageModel");
+const { io } = require("../socket/socket");
 const createGroup = async (req, res) => {
     const loggedUserId = req.user._id;
     const { groupName, participants } = req.body;

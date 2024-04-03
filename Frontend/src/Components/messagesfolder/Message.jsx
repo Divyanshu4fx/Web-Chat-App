@@ -40,7 +40,7 @@ function Message({ message }) {
                     {!message.isFileType && <div style={{ wordWrap: 'break-word' }} className={`chat-bubble text-white max-w-48 ${chatColor} ${shakeClass}`}>{message.message}</div>}
                     <div className='flex flex-row '>
                         {message.isFileType && <a style={{ wordWrap: 'break-word' }} className={`chat-bubble text-white ${chatColor} ${shakeClass} `}>{message.message}</a>}
-                        {message.isFileType && !fromMe && <a href={`http://localhost:8000/api/messages/file/${message._id}`} className={`text-white border-2 rounded-full h-fit p-1 mx-1`}><IoMdDownload /></a>}
+                        {message.isFileType && !fromMe && <a href={`https://web-chat-app-deploy.onrender.com/api/messages/file/${message._id}`} className={`text-white border-2 rounded-full h-fit p-1 mx-1`}><IoMdDownload /></a>}
                     </div>
                 </div>
             </div>

@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
-import { toast } from 'react-hot-toast';
+import React, { useState, useEffect } from 'react';
 import { IoAddCircleOutline } from "react-icons/io5";
+
 function SearchList(props) {
     const [filteredChats, setFilteredChats] = useState([]);
-
-    function onSearch() {
+    
+    useEffect(() => {
         const filteredChats = props.chats.filter((chat) =>
             (chat.fullname?.toLowerCase().includes(props.search.toLowerCase())) ||
             (chat.chatName?.toLowerCase().includes(props.search.toLowerCase()))
         );
         setFilteredChats(filteredChats);
-    }
+    }, [props.chats, props.search]);
 
     function handleClick(element) {
         props.setSelectedChat(element);
         props.setSearch("");
-        setFilteredChats([]);
         props.setEnableSearch(false);
     }
 
@@ -26,7 +25,7 @@ function SearchList(props) {
             <form className='relative z-10 flex flex-col px-8 py-4 bg-white rounded-lg' style={{ minWidth: "350px", minHeight: "415px" }}>
                 <button className='absolute top-0 right-0 px-1.5 py-1 m-1 bg-red-500 text-white rounded-md' onClick={(e) => { props.setEnableSearch(false) }}>X</button>
                 <label className='label text-black'>Search :</label>
-                <input className='input' type='text' placeholder='Search here...' value={props.search} onChange={(e) => { props.setSearch(e.target.value); onSearch(); }} />
+                <input className='input' type='text' placeholder='Search here...' value={props.search} onChange={(e) => { props.setSearch(e.target.value) }} />
                 <div className='divider'></div>
                 <div className='text-black' style={{ maxWidth: "300px", maxHeight: "250px", overflowY: "scroll", overflowX: "hidden" }}>
                     {filteredChats.map((element) => (

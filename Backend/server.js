@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const path = require('path');
 
 const authRouter = require('./routes/authRoutes.js');
 const connectToMongoDB = require('./DB/connectToDb.js');
@@ -10,8 +11,10 @@ const updateRouter = require("./routes/updateRouter.js");
 const groupRouter = require("./routes/groupRouter.js");
 const aiRouter = require("./routes/aiRoutes.js");
 const {app,server} = require("./socket/socket.js");
-// const app = express();
+
+
 const PORT = process.env.PORT || 5000;
+// const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
@@ -21,6 +24,7 @@ app.use("/api/users/", userRouter);
 app.use("/api/update/",updateRouter);
 app.use("/api/group/",groupRouter);
 app.use("/api/ai",aiRouter);
+// app.use(express.static(path.join(__dirname,"/frontend/dist")));
 app.get("/", (req, res) => {
     res.send("Hello World");
     res.end();

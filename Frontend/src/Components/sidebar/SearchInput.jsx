@@ -17,28 +17,8 @@ function SearchInput() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setEnableSearch(true);
-  //   if (!search) return;
-  //   if (search.length < 3) {
-  //     return toast.error("Search term must be 3 characters long");
-  //   }
-  //   const filteredChats = chats.filter((c) =>
-  //     (c.fullname?.toLowerCase().includes(search.toLowerCase())) ||
-  //     (c.chatName?.toLowerCase().includes(search.toLowerCase()))
-  //   );
-  //   // const chat = chats.find((c) =>
-  //   //   c.fullname.toLowerCase().includes(search.toLowerCase())
-  //   // );
-  //   console.log(filteredChats);
-  //   if (filteredChats) {
-  //     setChats(filteredChats);
-  //   }
-  //   // if (chat) {
-  //   //   setSelectedChat(chat);
-  //   //   setSearch("");
-  //   // }
     return;
   };
-
   return (
     <>
       {enableSearch && <SearchList setSelectedChat={setSelectedChat} chats={chats} enableSearch={enableSearch} search={search} setSearch={setSearch} setEnableSearch={setEnableSearch} />}

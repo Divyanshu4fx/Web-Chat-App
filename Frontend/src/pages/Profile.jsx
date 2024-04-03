@@ -10,7 +10,6 @@ import useUpdateData from "../hooks/useUpdateData.js";
 function Profile() {
   const { authUser } = useAuthContext();
   const [user, setUser] = useState(authUser);
-  console.log(user);
   const [editMode, setEditMode] = useState(false);
   const { loadingI, handleUpload } = useUpdateProfile();
   const { loadingD, handleData } = useUpdateData();

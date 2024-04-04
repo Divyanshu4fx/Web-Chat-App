@@ -24,10 +24,10 @@ const ChangePassword = () => {
         minSymbols: 1,
       })
     ) {
-      setErrorMessage("Is Strong Password");
+      setErrorMessage("Strong Password");
       setButtonDisabled(false);
     } else {
-      setErrorMessage("Is Not Strong Password");
+      setErrorMessage("Password Is Not Strong");
       setButtonDisabled(true);
     }
   };
@@ -60,14 +60,14 @@ const ChangePassword = () => {
     }
   };
   return (
-      <div className="flex items-center justify-center bg-red-500 bg-opacity-0 border rounded-lg shadow-md form-container bg-clip-padding backdrop-filter backdrop-blur-lg">
+      <div className="flex items-center justify-center p-1 bg-red-500 bg-opacity-0 border rounded-lg shadow-md bg-clip-padding backdrop-filter backdrop-blur-lg form-container border-2 border-white shadow-md shadow-black ">
         <Form
           layout="vertical"
           onFinish={onFinishHandler}
           className="w-full p-14"
         >
-          <h1 className="py-5 text-4xl text-center">Change Password</h1>
-          <div className="py-5 text-xl">{email}</div>
+          <h1 className="text-4xl font-bold text-center text-black underline m-4 mb-8">Change Password</h1>
+          <div className="py-4 text-xl font-semibold">{email}</div>
 
           <Form.Item label="New Password" name="password" required>
             <Input.Password
@@ -82,17 +82,19 @@ const ChangePassword = () => {
           </Form.Item>
         
           {errorMessage === "" ? (
-            <span />
-          ) : (
-            <span className="font-bold text-red-600">{errorMessage}</span>
-          )}
+              <span />
+            ) : (
+              <span className={"font-bold text-lg mb-2 " + (errorMessage === "Strong Password" ? "text-green-400" : "text-red-600")}>{errorMessage}</span>
+            )}
+          <div className="flex items-center justify-center">
           <button
             type="submit"
             disabled={isButtonDisabled}
-            className="px-4 py-2 mx-12 font-bold text-white bg-blue-400 border rounded roundedbg-blue-500 hover:bg-blue-700"
+            className="m-2 w-2/5 py-2 text-xl text-white font-semibold bg-red-500 hover:bg-green-500 shadow-md shadow-black rounded-xl"
           >
-            Login
+            Change
           </button>
+          </div>
         </Form>
       </div>
   );
